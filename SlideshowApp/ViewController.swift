@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet var nextImagesButton:UIButton!
+    @IBOutlet var backImagesButton:UIButton!
     
     @IBAction func imagesAction(_ sender: Any) {
         self.performSegue(withIdentifier: "toSecond", sender: nil)
@@ -38,7 +40,8 @@ class ViewController: UIViewController {
         
     }
     @IBAction func nextImages(){
-        if timer != nil {
+        if self.timer != nil {
+            cannotTouchButton ()
             return ;
         }
         nextImage()
@@ -49,6 +52,7 @@ class ViewController: UIViewController {
     }
     @IBAction func backImages(){
         if timer != nil {
+            cannotTouchButton()
             return ;
         }
         ImagesNumber = ImagesNumber - 1
@@ -100,7 +104,10 @@ class ViewController: UIViewController {
  
     @IBAction func startButton(_ sender: Any) {
         if  timer == nil {
-            self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self,selector:#selector(updateTimer(_:)), userInfo: nil, repeats: true)}
+            self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self,selector:#selector(updateTimer(_:)), userInfo: nil, repeats: true)
+            
+            
+        }
         else {
             self.timer.invalidate()   // タイマーを停止する
             self.timer = nil          // startTimer() の timer == nil で判断するために、 timer = nil としておく
@@ -113,7 +120,13 @@ class ViewController: UIViewController {
         
       
     }
-
+    func cannotTouchButton (){
+       
+       nextImagesButton.isEnabled = false
+       backImagesButton.isEnabled = false
+        
+        
+    }
     }
 
 
