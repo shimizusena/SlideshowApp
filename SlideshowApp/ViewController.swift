@@ -44,10 +44,15 @@ class ViewController: UIViewController {
             cannotTouchButton ()
             return ;
         }
+        else {
+            
         nextImage()
+            touchButton()
         
         print(ImagesNumber)
          displayImages()
+        }
+        
     
     }
     @IBAction func backImages(){
@@ -55,6 +60,9 @@ class ViewController: UIViewController {
             cannotTouchButton()
             return ;
         }
+        else{
+            touchButton()
+        
         ImagesNumber = ImagesNumber - 1
         
         if ImagesNumber  < 0 {
@@ -63,7 +71,7 @@ class ViewController: UIViewController {
         }
         displayImages ()
         print(ImagesNumber)
-   
+        }
     }
     
     func nextImage() {
@@ -110,7 +118,8 @@ class ViewController: UIViewController {
         }
         else {
             self.timer.invalidate()   // タイマーを停止する
-            self.timer = nil          // startTimer() の timer == nil で判断するために、 timer = nil としておく
+            self.timer = nil
+            print(timer_sec)// startTimer() の timer == nil で判断するために、 timer = nil としておく
         }
         }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -126,6 +135,10 @@ class ViewController: UIViewController {
        backImagesButton.isEnabled = false
         
         
+    }
+    func touchButton(){
+        nextImagesButton.isEnabled = true
+        backImagesButton.isEnabled = true
     }
     }
 
