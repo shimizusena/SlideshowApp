@@ -97,8 +97,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayImages ()
-     
-
      }
     
   
@@ -110,6 +108,7 @@ class ViewController: UIViewController {
         displayImages ()
     }
  
+    
     @IBAction func startButton(_ sender: Any) {
         if  timer == nil {
             self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self,selector:#selector(updateTimer(_:)), userInfo: nil, repeats: true)
