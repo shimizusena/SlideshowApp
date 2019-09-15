@@ -98,8 +98,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         displayImages ()
      }
-    
+
   
+    
     @objc func updateTimer(_ timer: Timer) {
         self.timer_sec = timer_sec + 0.1
          print(timer_sec)
