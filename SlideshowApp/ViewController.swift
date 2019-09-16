@@ -40,28 +40,14 @@ class ViewController: UIViewController {
         
     }
     @IBAction func nextImages(){
-        if self.timer != nil {
-            cannotTouchButton ()
-            return ;
-        }
-        else {
-            
-        nextImage()
-            touchButton()
-        
+       
+            nextImage()
         print(ImagesNumber)
          displayImages()
         }
-        
     
-    }
     @IBAction func backImages(){
-        if timer != nil {
-            cannotTouchButton()
-            return ;
-        }
-        else{
-            touchButton()
+        
         
         ImagesNumber = ImagesNumber - 1
         
@@ -71,7 +57,6 @@ class ViewController: UIViewController {
         }
         displayImages ()
         print(ImagesNumber)
-        }
     }
     
     func nextImage() {
@@ -113,12 +98,13 @@ class ViewController: UIViewController {
     @IBAction func startButton(_ sender: Any) {
         if  timer == nil {
             self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self,selector:#selector(updateTimer(_:)), userInfo: nil, repeats: true)
-            
+            cannotTouchButton()
             
         }
         else {
             self.timer.invalidate()   // タイマーを停止する
             self.timer = nil
+            canTouchButton()
             print(timer_sec)// startTimer() の timer == nil で判断するために、 timer = nil としておく
         }
         }
@@ -136,10 +122,12 @@ class ViewController: UIViewController {
         
         
     }
-    func touchButton(){
+
+    func canTouchButton () {
         nextImagesButton.isEnabled = true
         backImagesButton.isEnabled = true
     }
+
     }
 
 
